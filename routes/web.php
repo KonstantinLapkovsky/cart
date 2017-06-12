@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('shop.index');
-});
+Route::get('/', 'ProductController@index')->name('product.index');
+
+Route::get('/signup', 'UserController@create')->name('user.signup');
+Route::post('/signup', 'UserController@store')->name('user.signup');
+
+Route::post('/signup', 'UserController@store')->name('user.signup');
