@@ -13,7 +13,14 @@
 
 Route::get('/', 'ProductController@index')->name('product.index');
 
-Route::get('/signup', 'UserController@create')->name('user.signup');
-Route::post('/signup', 'UserController@store')->name('user.signup');
+Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
 
-Route::post('/signup', 'UserController@store')->name('user.signup');
+Route::prefix('user')->group(function() {
+	Route::get('/signup', 'UserController@getSignup')->name('user.signup');
+	Route::post('/signup', 'UserController@postSignup')->name('user.signup');
+	Route::get('/signin', 'UserController@getSignin')->name('user.signin');
+	Route::post('/signin', 'UserController@postSignin')->name('user.signin');
+	Route::get('/profile', 'UserController@getProfile')->name('user.profile');
+	Route::get('/logout', 'UserController@getLogout')->name('user.logout');
+});
+

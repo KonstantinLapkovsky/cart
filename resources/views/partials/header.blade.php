@@ -18,12 +18,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> User Management<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            @if (! auth())
+            @if (! auth()->check())
               <li><a href="{{ route('user.signup') }}">Sign Up</a></li>
-              <li><a href="#">Sign In</a></li>
-            @endif
-            @if (auth())
-              <li><a href="#">Logout</a></li>
+              <li><a href="{{ route('user.signin') }}">Sign In</a></li>
+            @else
+              <li><a href="{{ route('user.profile') }}">User Profile</a></li>
+              <li><a href="{{ route('user.logout') }}">Logout</a></li>
             @endif
           </ul>
         </li>
