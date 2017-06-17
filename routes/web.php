@@ -14,6 +14,10 @@
 Route::get('/', 'ProductController@index')->name('product.index');
 
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
+Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
+
+Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
+Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 
 Route::prefix('user')->group(function() {
 	Route::get('/signup', 'UserController@getSignup')->name('user.signup');
